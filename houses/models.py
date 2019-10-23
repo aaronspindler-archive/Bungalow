@@ -4,6 +4,17 @@ from django.db import models
 
 
 class House(models.Model):
+
+    HOME_TYPE_CHOICES = [
+        ('SingleFamily','Single Family'),
+        ('VacantResidentialLand','Vacant Residential Land'),
+        ('Miscellaneous','Miscellaneous'),
+        ('MultiFamily2To4','Multi Family 2 to 4'),
+        ('Condominium', 'Condominium'),
+        ('Apartment','Apartment'),
+        ('Duplex','Duplex')
+    ]
+
     #System Generated
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -13,7 +24,7 @@ class House(models.Model):
     bathrooms = models.FloatField(blank=True, null=True)
     bedrooms = models.IntegerField(blank=True, null=True)
     home_size = models.IntegerField(blank=True, null=True)
-    home_type = models.CharField(blank=True, null=True, max_length=50)
+    home_type = models.CharField(blank=True, null=True, max_length=50, choices=HOME_TYPE_CHOICES)
     last_sold_date = models.DateField(blank=True, null=True)
     last_sold_price = models.IntegerField(blank=True, null=True)
     link = models.URLField(blank=True, null=True)
