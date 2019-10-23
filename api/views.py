@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+
 from houses.models import House
 from .serializers import HouseSerializer
 
@@ -6,7 +7,7 @@ from .serializers import HouseSerializer
 class HouseViewSet(viewsets.ModelViewSet):
     serializer_class = HouseSerializer
 
-    # This is a very basic filtering which can be improved when time permitting
+    # This is a very basic filtering which can be improved with time permitting
     def get_queryset(self):
         queryset = House.objects.all()
 
@@ -97,6 +98,5 @@ class HouseViewSet(viewsets.ModelViewSet):
         zipcode = self.request.query_params.get('zipcode', None)
         if zipcode is not None:
             queryset = queryset.filter(zipcode=zipcode)
-
 
         return queryset

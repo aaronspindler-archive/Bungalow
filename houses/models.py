@@ -1,46 +1,42 @@
 from django.db import models
 
-# Create your models here.
-
 
 class House(models.Model):
-
     HOME_TYPE_CHOICES = [
-        ('SingleFamily','Single Family'),
-        ('VacantResidentialLand','Vacant Residential Land'),
-        ('Miscellaneous','Miscellaneous'),
-        ('MultiFamily2To4','Multi Family 2 to 4'),
+        ('SingleFamily', 'Single Family'),
+        ('VacantResidentialLand', 'Vacant Residential Land'),
+        ('Miscellaneous', 'Miscellaneous'),
+        ('MultiFamily2To4', 'Multi Family 2 to 4'),
         ('Condominium', 'Condominium'),
-        ('Apartment','Apartment'),
-        ('Duplex','Duplex')
+        ('Apartment', 'Apartment'),
+        ('Duplex', 'Duplex')
     ]
 
-    #System Generated
+    # System Generated
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    #Data Fields
-    area_unit = models.TextField(blank=True, null=True)
-    bathrooms = models.FloatField(blank=True, null=True)
-    bedrooms = models.IntegerField(blank=True, null=True)
-    home_size = models.IntegerField(blank=True, null=True)
-    home_type = models.CharField(blank=True, null=True, max_length=50, choices=HOME_TYPE_CHOICES)
-    last_sold_date = models.DateField(blank=True, null=True)
-    last_sold_price = models.IntegerField(blank=True, null=True)
-    link = models.URLField(blank=True, null=True)
-    price = models.IntegerField(blank=True, null=True)
-    property_size = models.IntegerField(blank=True, null=True)
-    rent_price = models.IntegerField(blank=True, null=True)
+    # Data Fields
+    area_unit = models.TextField(blank=True, verbose_name='Area Unit')
+    bathrooms = models.FloatField(blank=True, null=True, verbose_name='Number of Bathrooms')
+    bedrooms = models.IntegerField(blank=True, null=True, verbose_name='Number of Bedrooms')
+    home_size = models.IntegerField(blank=True, null=True, verbose_name='House Size')
+    home_type = models.CharField(blank=True, null=True, max_length=50, choices=HOME_TYPE_CHOICES, verbose_name='Home Type')
+    last_sold_date = models.DateField(blank=True, null=True, verbose_name='Last Sold Date')
+    last_sold_price = models.IntegerField(blank=True, null=True, verbose_name='Last Sold Price')
+    link = models.URLField(blank=True, verbose_name='Link')
+    price = models.IntegerField(blank=True, null=True, verbose_name='Price $')
+    property_size = models.IntegerField(blank=True, null=True, verbose_name='Property Size')
+    rent_price = models.IntegerField(blank=True, null=True, verbose_name='Rent Price')
     rentzestimate_amount = models.IntegerField(blank=True, null=True)
     rentzestimate_last_updated = models.DateField(blank=True, null=True)
-    tax_value = models.FloatField(blank=True, null=True)
-    tax_year = models.IntegerField(blank=True, null=True)
-    year_built = models.IntegerField(blank=True, null=True)
+    tax_value = models.FloatField(blank=True, null=True, verbose_name='Tax Value')
+    tax_year = models.IntegerField(blank=True, null=True, verbose_name='Tax Year')
+    year_built = models.IntegerField(blank=True, null=True, verbose_name='Year Built')
     zestimate_amount = models.IntegerField(blank=True, null=True)
     zestimate_last_updated = models.DateField(blank=True, null=True)
-    zillow_id = models.IntegerField(blank=True, null=True)
-    address = models.TextField(blank=True, null=True)
-    city = models.TextField(blank=True, null=True)
-    state = models.TextField(blank=True, null=True)
-    zipcode = models.CharField(blank=True, null=True, max_length=5)
-
+    zillow_id = models.IntegerField(unique=True, blank=True, null=True, verbose_name='Zillow ID')
+    address = models.TextField(blank=True, verbose_name='Address')
+    city = models.TextField(blank=True, verbose_name='City')
+    state = models.TextField(blank=True, verbose_name='State')
+    zipcode = models.CharField(blank=True, max_length=5, verbose_name='Zip Code')

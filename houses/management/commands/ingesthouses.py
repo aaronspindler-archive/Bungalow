@@ -1,8 +1,10 @@
-from django.core.management.base import BaseCommand, CommandError
-from houses.models import House
 import csv
 import datetime
 from decimal import Decimal
+
+from django.core.management.base import BaseCommand
+
+from houses.models import House
 
 
 class Command(BaseCommand):
@@ -18,8 +20,8 @@ class Command(BaseCommand):
     def convert_price_format(self, input):
         if not input[0:1] == '$':
             return None
-        number_portion = Decimal(input[1:len(input)-1])
-        multiplier = input[len(input)-1]
+        number_portion = Decimal(input[1:len(input) - 1])
+        multiplier = input[len(input) - 1]
 
         if multiplier == 'K':
             return number_portion * 1000
