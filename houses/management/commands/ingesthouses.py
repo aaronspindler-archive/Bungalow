@@ -34,10 +34,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         file_name = options['file']
 
-        Houses = House.objects.all()
-        for house in Houses:
-            house.delete()
-
         reader = csv.DictReader(open(file_name))
         num_houses = 0
         for row in reader:
